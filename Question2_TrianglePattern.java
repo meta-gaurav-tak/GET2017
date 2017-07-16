@@ -7,7 +7,7 @@ public class Question2_TrianglePattern {
 	/**
 	 * This method gives the number of spaces in the pattern in each row 
 	 * @param row
-	 * @param n denotes the max value of pattern and the total number of rows in pattern
+	 * @param n denotes the pattern count
 	 * @return
 	 */
 	public String spaces(int row,int n) {
@@ -17,6 +17,7 @@ public class Question2_TrianglePattern {
 		}
 		return space;
 	}
+	
 	/**
 	 * This method returns the number string for each row specified
 	 * @param row
@@ -30,6 +31,7 @@ public class Question2_TrianglePattern {
 		}
 		return number;
 	}
+	
 	/**
 	 * This method prints the triangle pattern
 	 * @param n
