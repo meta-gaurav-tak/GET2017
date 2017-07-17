@@ -40,10 +40,10 @@ public class Question1_Pyramid {
 	 */
 	public String[] printPyramid(int n) throws NullPointerException {
 		if(n<1) {
-			System.out.println("Invalid entry for max pattern count");
+			System.out.println("Invalid entry for pattern count");
 			throw new NullPointerException();
 		}
-		String[] pyramidPattern=new String[2*n-1];   //improvement can be done here; handle case for n=0 
+		String[] pyramidPattern=new String[2*n-1];
 		for(int i=0;i<2*n-1;i++) {
 			pyramidPattern[i]=spaces(i+1,n)+numbers(i+1,n);
 			System.out.println(pyramidPattern[i]);
@@ -52,7 +52,7 @@ public class Question1_Pyramid {
 	}
 	
 	/**
-	 * 
+	 * This method gives absolute value for n
 	 * @param n
 	 * @return
 	 */

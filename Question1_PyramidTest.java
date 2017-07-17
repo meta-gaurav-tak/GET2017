@@ -1,6 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 /**
  * Test class for Pyramid
  * @author Gaurav Tak
@@ -29,7 +30,7 @@ public class Question1_PyramidTest {
 			assertArrayEquals(expectedPyramid,obtainedPyramid);
 		}
 		catch(NullPointerException e){
-			//e.getMessage();
+			e.getMessage();
 		}
 	}
 	
@@ -46,7 +47,7 @@ public class Question1_PyramidTest {
 		Question1_Pyramid pyramidObject = new Question1_Pyramid();
 		String expected="     ";
 		String spaceOutput=pyramidObject.spaces(2,5); //row_no=3; pyramid_count=5;
-		assertEquals(expected,spaceOutput);
+		assertNotEquals(expected,spaceOutput);
 	}
 	@Test
 	public void numbersTest(){
@@ -61,6 +62,6 @@ public class Question1_PyramidTest {
 		Question1_Pyramid pyramidObject = new Question1_Pyramid();
 		String expected="123451234";
 		String spaceOutput=pyramidObject.numbers(5,6); //row_no=5; pyramid_count=6;
-		assertEquals(expected,spaceOutput);
+		assertNotEquals(expected,spaceOutput);
 	}	
 }

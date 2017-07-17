@@ -1,7 +1,7 @@
 import org.junit.Test;
-
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 /**
  * Test class for Triangle
  * @author Gaurav Tak
@@ -37,7 +37,7 @@ public class Question2_TrianglePatternTest {
 		Question2_TrianglePattern triangleObject = new Question2_TrianglePattern();
 		String expected=" ";
 		String spaceOutput=triangleObject.spaces(3,5); //row_no=3; pyramid_count=5;
-		assertEquals(expected,spaceOutput);
+		assertNotEquals(expected,spaceOutput);
 	}
 	@Test
 	public void numbersTest(){
@@ -52,6 +52,6 @@ public class Question2_TrianglePatternTest {
 		Question2_TrianglePattern triangleObject = new Question2_TrianglePattern();
 		String expected="1234";
 		String spaceOutput=triangleObject.numbers(3,5); //row_no=3; pyramid_count=5;
-		assertEquals(expected,spaceOutput);
+		assertNotEquals(expected,spaceOutput);
 	}
 }
