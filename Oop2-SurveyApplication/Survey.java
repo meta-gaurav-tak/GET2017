@@ -52,9 +52,12 @@ public class Survey {
 				}
 			} else if(question.getQuestionType().equals("Multi-Select")) {
 				answer=scannerObject.nextLine();
-				if(!checkChoices(question.getChoices(),answer))  {
-					System.out.println("Enter a valid option from the given choices");
-					answer=scannerObject.nextLine();
+				String selectedOptions[]=answer.split("/");
+				for(String option : selectedOptions) {
+					if(!checkChoices(question.getChoices(),selectedOptions))  {
+						System.out.println("select valid options from the given choices");
+						answer=scannerObject.nextLine();
+					}
 				}
 			} else if(question.getQuestionType().equals("Text")) {
 				answer=scannerObject.nextLine();
