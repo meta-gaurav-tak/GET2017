@@ -5,8 +5,16 @@ import java.util.Scanner;
 
 public class Menu extends MenuItem {
 	
+	private Menu parentMenu;		//stores the parent for Menu
 	private List<MenuItem> subMenu=new ArrayList<MenuItem>();		
 	private Scanner scan;			// scanner object to take input
+	public Menu getParentMenu() {
+		return parentMenu;
+	}
+
+	public void setParentMenu(Menu parentMenu) {
+		this.parentMenu = parentMenu;
+	}
 
 	public List<MenuItem> getSubMenu() {
 		return subMenu;

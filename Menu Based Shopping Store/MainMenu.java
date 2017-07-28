@@ -22,16 +22,36 @@ public class MainMenu {
 		menuItemPromo.setDisplayName("2. Display Promotion List");
 		subMenu.add(menuItemPromo);
 		
-		/*Creating submenu for Promo menu*/
-		List<MenuItem> subPromoMenu=((Menu) menuItemPromo).getSubMenu();
+			/*Creating submenu for Promo menu*/
+			List<MenuItem> subPromoMenu=((Menu) menuItemPromo).getSubMenu();
+			
+			MenuItem menuItemOrderPromo=new ActionableMenuItem(new DisplayOrderPromoList());	// menu item that is action-able and displays OrderPromotion list
+			menuItemOrderPromo.setDisplayName("1. Display Order Promotion List");
+			subPromoMenu.add(menuItemOrderPromo);
+			
 		
-		MenuItem menuItemOrderPromo=new ActionableMenuItem(new DisplayOrderPromoList());	// menu item that is action-able and displays OrderPromotion list
-		menuItemOrderPromo.setDisplayName("1. Display Product Promotion List");
-		subPromoMenu.add(menuItemOrderPromo);
-		
-		MenuItem menuItemProductPromo=new ActionableMenuItem(new DisplayProductPromoList());// menu item that is action-able and displays productPromotion list
-		menuItemProductPromo.setDisplayName("2. Display Promotion List");
-		subPromoMenu.add(menuItemProductPromo);
+				
+			MenuItem menuItemProductPromo=new Menu();									// menu that will have a sub menu to display product promotion	
+			menuItemProductPromo.setDisplayName("2. Display Product Promotion List");
+			subPromoMenu.add(menuItemProductPromo);
+				
+				/*creatin a submenu to Product promotion*/
+				List<MenuItem> subPromoProductMenu=((Menu) menuItemProductPromo).getSubMenu();
+				
+		   	 	MenuItem menuItemProductPromoSubMenu1=new ActionableMenuItem(new DisplayProductPromoList());
+		        menuItemProductPromoSubMenu1.setDisplayName("1. Display Product Promotion");
+		        subPromoProductMenu.add(menuItemProductPromoSubMenu1);
+		        
+				/*add back functionality to go to previous menu*/
+		        MenuItem menuItemBack=new Back();
+		        menuItemBack.setDisplayName("2. Previous Menu");
+		        subPromoProductMenu.add(menuItemBack);
+				
+			/*add back functionality to go to previous menu*/	
+	        MenuItem menuItemBackPromo=new Back();
+	        menuItemBackPromo.setDisplayName("3. Previous Menu");
+	        subPromoMenu.add(menuItemBackPromo);
+			
 		/*End Of Promo Submenu*/
 		
 		
@@ -60,33 +80,38 @@ public class MainMenu {
 	
 	/* a method to display menu and perfornm actions on actionable menu  */
 	public static void displayAndPerformAction(Menu menu){					
-		display(menu);
-		int choice=menu.getInput();
-		MenuItem menuItem= menu.getSelection(choice);
-		
-		if(menuItem==null){
+		while(true) {					// to loop until exit is pressed
+			display(menu);
+			int choice=menu.getInput();
+			MenuItem menuItem= menu.getSelection(choice);
 			
-		displayAndPerformAction(menu);
-		
-		} else if(menuItem instanceof ActionableMenuItem){
-
-		((ActionableMenuItem)menuItem).triggerAction();
-
-		} else{
+			if(menuItem==null){
+				
+			displayAndPerformAction(menu);
 			
-		displayAndPerformAction((Menu)menuItem);
-		
-		}	
+			} else if(menuItem instanceof ActionableMenuItem){
+	
+			((ActionableMenuItem)menuItem).triggerAction();
+	
+			} else if(menuItem instanceof Menu){
+				
+				((Menu) menuItem).setParentMenu(menu);
+				displayAndPerformAction((Menu)menuItem);
+			
+			} else{
+				
+				displayAndPerformAction(menu.getParentMenu());
+			}
+		}
 	}
 	
 	/*Main function for initial call*/
 	public static void main(String args[]) {
 		
 		Menu mainMenu=MainMenu.createMenu();
-		
-		while(true){						//display menu repetitively until exit is choosen
+		mainMenu.setParentMenu(mainMenu);
 		MainMenu.displayAndPerformAction(mainMenu);
-		}
+		
 		
 	}
 }
