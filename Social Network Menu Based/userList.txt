@@ -1,0 +1,12 @@
+Person;grv_tak;grv@gmail.com;Gaurav Tak;06-04-1995;Male;Jaipur;A.V.M.,Sirohi;Software Engineer;Sleeping;+918559807240
+Organisation;meta_cube;metacube@gmail.com;Meta Cube;14-09-2004;Keshav Shrama;Jaipur;Software Technology;Web and Mobile;+919876543210
+Person;g_tak;g@gmail.com;Gaurav Tak;06-04-1995;Male;Jaipur;A.V.M.,Sirohi;Spokes Person;Sleeping;+918559807210
+Person;s_tak;s@gmail.com;Shiv Tak;06-09-1975;Male;Mumbai;JPS,Jaipur;Software Engineer;Cricket;+918559807220
+Person;n_tak;n@gmail.com;neha Tak;06-05-1985;Female;Udaipur;Pauls,Sirohi;Flight Attendent;TV;+918559807230
+Organisation;n_b_c;nbc@gmail.com;NBC;14-09-1994;Rajendra Kumar;New Delhi;Manufacturing;Production and Exporting;+919876543120
+Person;j_tak;j@gmail.com;Jay Tak;01-04-1989;Male;Jaipur;Pauls,Sirohi;Accountant;Sports;+918559807250
+Person;j_tak;j@gmail.com;Jay Tak;01-04-1989;Male;Jaipur;Pauls,Sirohi;Accountant;Sports;+918559807250
+Person;m_tak;m@gmail.com;mona Tak;06-12-2000;Female;Jaipur;A.V.M.,Sirohi;Homemaker;Sleeping;+918559807280
+Person;m_tak;m@gmail.com;mona Tak;06-12-2000;Female;Jaipur;A.V.M.,Sirohi;Homemaker;Sleeping;+918559807280
+Person;j_tak;j@gmail.com;Jay Tak;01-04-1989;Male;Jaipur;Pauls,Sirohi;Accountant;Sports;+918559807250
+Organisation;n_b_c;nbc@gmail.com;NBC;14-09-1994;Rajendra Kumar;New Delhi;Manufacturing;Production and Exporting;+919876543120
