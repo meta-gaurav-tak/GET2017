@@ -8,13 +8,13 @@ import java.util.Map;
 public abstract class Entity implements Node {
 	private static int entityCount;
 	private String userId;
-	public Entity() {          // sets userId for each Object: Unique to each instance
-		userId=""+(++entityCount);
-	}
 	private String userName;
 	private String email;
 	private String nameOfEntity;
 	private String entityType;
+	public Entity() {          // sets userId for each Object: Unique to each instance
+        userId=""+(++entityCount);
+    }
 	private static Map<String,Entity> entityMap;
 
 	public static Map<String, Entity> getEntityMap() {
@@ -79,7 +79,10 @@ public abstract class Entity implements Node {
          
         // typecast o to Entity so that we can compare data members 
         Entity e = (Entity) o;
-         
+        //check if hash bucket is same
+         if(!(this.hashCode()==e.hashCode())) {
+             return false;
+         }
         // Compare the data members and return accordingly 
         return this.userId.equals(e.userId);
     }
@@ -100,5 +103,10 @@ public abstract class Entity implements Node {
 			}
 		}
 		return searchResults;
+	}
+	
+	@Override                                                     //overriding hashCode method
+	public int hashCode() {
+	    return userName.hashCode()+email.hashCode();
 	}
 }
