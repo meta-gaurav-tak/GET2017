@@ -19,7 +19,6 @@ ul,.menuList{
 }
 .mainContainer{
     background: #fff;
-    -webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,.4);
     border-radius: 10px;
 }
 .active,.navLinks:hover{
