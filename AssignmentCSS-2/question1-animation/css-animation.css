@@ -1,0 +1,62 @@
+h3{
+    text-align: center;
+    color: #ffffff;
+}
+.div-size{
+    height:100px;
+    width:100px;
+}
+#rotate {
+    background-color:#ff0000;
+    margin:1.5%;
+    margin-left:5%;
+    transition:2s;
+}
+#rotate:hover {
+    transform:rotate(360deg) ;
+}
+
+#scale {
+    background-color:#ffcc00;
+    margin:2%;
+    margin-left:25%;
+    transition:1s;
+}
+
+#scale:hover {
+    transform:scale(2,2);
+}
+
+#skew {
+    background-color:#009933;
+    margin:2%;
+    margin-left:45%;
+    transition:1s;
+}
+
+#skew:hover {
+    transform: skew(45deg,0);
+}
+
+#translate {
+    background-color:#0099ff;
+    margin:2%;
+    margin-left:65%;
+    transition:1s;
+}
+
+
+#translate:hover{
+    transform:translate(0,100px);
+}
+
+#border {
+    background-color:#9966ff;
+    margin:2%;
+    margin-left:85%;
+    transition:1s;
+}
+
+#border:hover{
+     border-radius: 50%;
+}
