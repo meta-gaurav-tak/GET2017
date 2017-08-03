@@ -4,20 +4,20 @@
     <link rel="stylesheet" type="text/css" href="stylesheet/stylesheet.css">
     </head>
     <body class="main-body">
-        <div class="header">
+        <div class="header bold-text">
             <div class="site-name">My Site</div>
             <div class="nav-bar">
                 <nav>
-                    <a class="nav-link" href="home.html">Home</a>
-                    <a class="nav-link" href="home.html">Tour</a>
-                    <a class="nav-link" href="home.html">SignUp</a>
+                    <a class="nav-link bold-text" href="home.html">Home</a>
+                    <a class="nav-link bold-text" href="home.html">Tour</a>
+                    <a class="nav-link bold-text" href="home.html">SignUp</a>
                 </nav>
             </div>
         </div>
         <div class="container">
             <div class="container-box">
                 <div class="big-bold">
-                    <div class="big-bold-text">
+                    <div class="big-bold-text bold-text">
                         <h1>BIG BOLD TEXT</h1>
                     </div>
                 </div>
@@ -27,13 +27,13 @@
         </div>
         <div class="wrapper">
             <div class="content">
-                <div class="content-header">
+                <div class="content-header bold-text">
                     <H2>Lorem ipsum dolor sit amet</H2>
                 </div>
                 <div class="info-block">
                     <div class="infobox">
-                        <div class="infobox-header">
-                        <img src="rocket.jpg" height="35px" weight="35px">
+                        <div class="infobox-header bold-text">
+                        <img src="images/rocket.jpg" height="35px" weight="35px">
                         <h4>Get Started Quickly</h4>
                         </div>
                         Vivamus sed tellus nibh. Etiam viverra, velit vitae lacinia tempor, 
@@ -41,7 +41,7 @@
                         Phasellus suscipit urna imperdiet sapien volutpat vestibulum.
                     </div>
                     <div class="infobox">
-                        <div class="infobox-header">
+                        <div class="infobox-header bold-text">
                             <img src="images/mobile.jpg" height="35px" weight="35px">
                             <h4>Responsive Layouts</h4>
                             </div>
@@ -50,7 +50,7 @@
                             Phasellus suscipit urna imperdiet sapien volutpat vestibulum.
                     </div>
                     <div class="infobox">
-                        <div class="infobox-header">
+                        <div class="infobox-header bold-text">
                             <img src="images/mosaic.jpg" height="35px" weight="35px">
                             <h4>Modular</h4>
                             </div>
@@ -59,7 +59,7 @@
                             Phasellus suscipit urna imperdiet sapien volutpat vestibulum.
                     </div>
                     <div class="infobox">
-                        <div class="infobox-header">
+                        <div class="infobox-header bold-text">
                             <img src="images/tick.jpg" height="35px" weight="35px">
                             <h4>Plays Nice</h4>
                             </div>
@@ -85,18 +85,18 @@
                 </div>
             </div>
             <div id="last-block">
-                <div class="last-block-head">
+                <div class="last-block-head bold-text">
                     <h2>Dolore magna aliqua. Uis aute irure.</h2>
                 </div>
                 <div class="last-block-content">
                     <div class="form-data">
                         <form class="form-padding">
                             <div class="form-data-label">Your Name</div>
-                                <input id="name" placeholder="Your Name" type="text">
+                                <input id="name" placeholder="Your Name" type="text" required>
                             <div class="form-data-label">Your Email</div>
-                                <input id="email" placeholder="Your Email" type="email">
+                                <input id="email" placeholder="Your Email" type="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                             <div class="form-data-label">Your Password</div>
-                                <input id="password" placeholder="Your Password" type="password">
+                                <input id="password" placeholder="Your Password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                             <button type="submit" class="submit-button">Sign Up</button>
                         </form>
                     </div>
