@@ -13,21 +13,21 @@
         <br/><br/>
         <input type="button" value="Get Name From Local Storage" onclick="getStore()" />
     </body>
-        <script>
-        localStorage.getItem("username");
-        if(localStorage.getItem("username")){
-            document.getElementById("nameOfUser").innerHTML = localStorage.getItem("username");
-        }
-            
-        function getStore(){
-            var msg=document.getElementById("nameOfUser");	
-            msg.innerHTML = localStorage.getItem("username");
-        }
+    <script>
+    localStorage.getItem("username");
+    if(localStorage.getItem("username")){
+        document.getElementById("nameOfUser").innerHTML = localStorage.getItem("username");
+    }
         
-        function saveToStore(){
-            var textbox=document.getElementById("textbox");
-            localStorage.setItem("username",textbox.value);
-            textbox.value="";
-        }
-        </script>   
+    function getStore(){
+        var msg=document.getElementById("nameOfUser");	
+        msg.innerHTML = localStorage.getItem("username");
+    }
+    
+    function saveToStore(){
+        var textbox=document.getElementById("textbox");
+        localStorage.setItem("username",textbox.value);
+        textbox.value="";
+    }
+    </script>   
 </html>
