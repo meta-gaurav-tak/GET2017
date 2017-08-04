@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <title>
+            DragNDropDemo
+        </title>
+        <script>
+            function allowDrop(ev) {
+                ev.preventDefault();
+            }
+
+            function drag(ev) {
+                ev.dataTransfer.setData("text", ev.target.id);
+            }
+
+            function drop(ev) {
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("text");
+                ev.target.appendChild(document.getElementById(data));
+            }
+        </script>
+    </head>
+    
+    <body>
+    <p>Drag the metacube image into the rectangle:</p>
+        <div class="div-main">
+            <div class="div1 div-margin" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>
+            <div class="div2 div-margin" id="drag2" draggable="true" ondragstart="drag(event)" >
+                <img id="drag1" src="images/logo.svg" draggable="true" ondragstart="drag(event)">
+            </div>
+               <div class="div1 div-margin" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>
+        </div>
+    </body>
+
+    <style>
+        .div-main{
+            display:flex;
+            padding:20px;
+        }
+        .div-margin{
+            margin:10%;
+        }
+        .div1 {
+            display:flex;
+            flex:1;
+            border: 1px solid #aaaaaa;
+        }
+        .div2{
+            background:pink;
+            flex:1;
+        }
+        #drag1{
+            padding:30px;
+        }
+    </style>
+
+</html>
