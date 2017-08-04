@@ -1,0 +1,64 @@
+h1{
+	padding:30px;
+}
+button{
+	background-color:#f5910e;
+	color:white;
+	height:40px;
+	width:100px;
+	border: 1px solid burlywood;
+	border-radius:5px;
+	cursor:pointer;
+}
+body{
+	background: #e8e8e8;
+}
+.joining{
+	border-radius: 5px;
+}
+input,select{
+	height:33px;
+}
+td{
+    text-align:right;
+    font-weight:bold;
+}
+input,placeholder,select{
+	font-size:15px;
+    width:240;
+	color:#77778c;
+}
+input[type=radio]{
+    width:30px;
+    text-align:left;
+}
+.icon{
+	padding:4px;
+}
+input {
+  padding-left:4px;
+}
+.border{
+	border-bottom: 1px solid lightgrey;
+}
+.contact{
+	height:750px;
+}
+input:invalid { 
+    border: 2px solid #a94442;
+}
+input:valid{
+	border: 2px solid #3c763d;
+}
+select:invalid { 
+    border: 2px solid #a94442;
+}
+select:valid{
+	border: 2px solid #3c763d;
+}
+.radio-button{
+    vertical-align:middle;
+}
+.left-align{
+    text-align:left;
+}

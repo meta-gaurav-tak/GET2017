@@ -1,0 +1,134 @@
+<html>
+		<head>
+			<link rel="stylesheet" type="text/css" href="stylesheet/style.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+				<title>
+					Validation Form
+				</title>
+		</head>
+	<body>
+		<h1 class="border">Contact Us Today !</h1>
+		<div class="contact">
+			<form>
+				<table align="center" cellspacing="25px">
+					<tr>
+						<td>First Name<sup>*</sup> </td>
+						<td>
+                            <span class="joining">
+                                <i class="fa fa-user icon"></i>
+                                <input type="text" name="firstname" placeholder="First Name" size="30" pattern="[A-Za-z][A-Za-z 0-9]*" required>
+                            </span>
+                        </td>
+					</tr>
+
+					<tr>
+						<td>Last Name<sup>*</sup> </td>
+						<td>
+                            <span class="joining">
+                                <i class="fa fa-user icon"></i>
+                                <input type="text" name="lastname" placeholder="Last Name" pattern="[A-Za-z][A-Za-z 0-9]*" size="30" required>
+                            </span>
+                        </td>
+					</tr>
+
+					<tr>
+						<td>E-mail<sup>*</sup> </td>
+						<td>
+                            <span class="joining">
+                                <i class="fa fa-envelope icon"></i>
+                                <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="E-mail Address" size="30" required>
+                            </span>
+                        </td>
+					</tr>
+
+					<tr>
+						<td>Phone<sup>*</sup> </td>
+						<td>
+                            <span class="joining">
+                                <i class="fa fa-phone icon"></i>
+                                <input type="phone" name="phone" placeholder="9876543210" size="30" pattern="[0-9]{10}" required title="Enter number between 6-12 digits">
+                            </span>
+                        </td>
+					</tr>
+
+					<tr>
+						<td>Address </td>
+						<td>
+                            <span class="joining">
+                                <i class="fa fa-home icon"></i>
+                                    <input type="text" name="address" placeholder="Address" >
+                            </span>
+                        </td>
+					</tr>
+
+					<tr>
+						<td>City<sup>*</sup> </td>
+						<td>
+                            <span class="joining">
+                                <i class="fa fa-home icon"></i>
+                                <input type="text" name="city" placeholder="City" size="30" required>
+                            </span>
+                        </td>
+					</tr>
+
+					<tr>
+						<td>State </td>
+						<td>
+                            <span class="joining">
+                                <i class="fa fa-list icon"></i>
+                                <select class="state" name="state">
+                                    <option value="" disabled selected>Select your State</option>
+                                    <option value="Bihar">Rajasthan</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                </select>
+                            </span>
+                        </td>
+					</tr>
+
+					<tr>
+						<td>Zip Code </td>
+						<td>
+                            <span class="joining">
+                                <i class="fa fa-home icon"></i>
+                                <input type="phone" name="zipcode" placeholder="Zip Code" size="30" pattern="[0-9]{6}" title="Enter valid code between 6-8 digits">
+                            </span>
+                        </td>
+					</tr>
+
+					<tr>
+						<td>Website or domain name </td>
+						<td>
+                            <span class="joining">
+                                <i class="fa fa-globe icon"></i>
+                                <input type="url" name="websiteordomain" placeholder="Website or domain name" size="30" >
+                            </span>
+                        </td>
+					</tr>
+
+					<tr>
+						<td>Do you have hosting?</td>
+						<td class="left-align">
+                            <input class="radio-button" type="radio" name="rad"/> Yes 
+                            <input class="radio-button" type="radio" name="rad"/> No
+                        </td>
+					</tr>
+                    
+					<tr>
+						<td>Project Summary</td>
+						<td>
+                            <span class="joining">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true" style="font-size:25px;"></i>
+                                <textarea rows="2" cols="28" name="description" placeholder="Project Description"></textarea>
+                            </span>
+                        </td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><button>Send<i class="fa fa-paper-plane"></button><td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>
