@@ -4,6 +4,14 @@
         <title>
             GeolacationDemonstration
         </title>
+    </head>
+
+    <body>
+        <p>click below to get your location </p>
+        <button type="button" name="getLocationButton" onclick="getLocation()">
+            click here for location
+        </button>
+        <p id="location">your location wiil be displayed here.</p>
         <script>
         var paragraph=document.getElementById("location");
         
@@ -19,14 +27,6 @@
         paragraph.innerHTML = "latitude : "+position.coords.latitude+"<br> longitude: "+position.coords.longitude;
         }
         </script>
-    </head>
-
-    <body>
-        <p>click below to get your location </p>
-        <button type="button" name="getLocationButton" onclick="getLocation()">
-            click here for location
-        </button>
-        <p id="location">your location wiil be displayed here.</p>
     </body>
     
 </html>
