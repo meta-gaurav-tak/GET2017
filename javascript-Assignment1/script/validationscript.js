@@ -1,6 +1,6 @@
 //function to add hyperlink functionality
 function changePage(page){
-            window.location.href=page;
+    window.location.href=page;
 }
 
 //function to validate form before submission
