@@ -1,0 +1,8 @@
+.hyperlink-text{
+    text-decoration: underline;
+    cursor:pointer;
+    color:blue;
+}
+.hyperlink-text:visited{
+    color:violet;
+}
