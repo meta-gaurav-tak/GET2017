@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebWorker</title>
+    </head>
+    <body>
+        <button onclick="startWorker()">Start Worker</button>
+        <p id="time-from-worker"></p>
+        <form>
+            <img id="myImage" src="images/smiley.jpg" />
+            <p>Click the buttons below to handle animation</p>
+            <input type="button" value="Start" onclick="moveRight();" />
+            <input type="button" value="Stop" onclick="stop();" />
+        </form>
+        <script src="script/multithreadScript.js">
+        </script>
+    </body>
+</html> 

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact Javascript Assignment</title>
+        <script type="text/javascript" src="script/validationscript.js"></script>   
+    </head>
+    <body >
+        <!-- Header Table Start -->
+        <table width="75%" id="header" align="center">
+            <tr>
+                <td width="5%">
+                    <img src="images/HTML5_logo.png" width="55px" height="55px"/>
+                </td>
+                <td width="95%" align="right">
+                    <button class="hyperlink-button" id="home-menu" onclick="changePage('homepage.html')" class="hyperlink-text">Home</button>
+                    <button class="hyperlink-button" onclick="changePage('homepage.html')" class="hyperlink-text">About</button>
+                    <button class="hyperlink-button" onclick="changePage('homepage.html')" class="hyperlink-text">Product</button>
+                    <button class="hyperlink-button" onclick="changePage('homepage.html')" class="hyperlink-text">Gallery</button>
+                    <button class="hyperlink-button" id="contact-menu" onclick="changePage('contact.html')" class="hyperlink-text">Contact</button>
+                </td>
+            </tr>
+        </table>
+        <!-- Header Table End -->
+        <hr/>
+        <!-- Cover Table Starts -->
+        <table width="75%" id="cover" align="center">
+            <tr align="center">
+                <td>
+                    <img src="images/contact_us.jpg" width="100%" />
+                </td>
+            </tr>
+        </table>
+        <!-- Cover Table Ends -->
+        <!-- Contact Form Starts -->
+        <form  method="get" id="contactForm" action="thankyou.html" autocomplete="off">
+            <table align="center" id="userform">
+                <tr>
+                    <td>Name <sup style="color:red">*</sup></td>
+                    <td>
+                        <input type="text" name="username" id="username" onkeypress="return isCharacterKey(event)" onkeyup="return validateName()"/>
+                    </td>
+                </tr>    
+                <tr>
+                    <td >Email <sup style="color:red">*</sup></td>
+                    <td>
+                        <input type="text" name="useremail" id="useremail"  onkeyup="return validateEmail()" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td>
+                        <select name="usercity" id="usercity" onchange="viewCityDescription()">
+                            <option value="default" selected hidden></option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Udaipur">Udaipur</option>
+                            <option value="Sirohi">Sirohi</option>
+                            <option value="Mt. Abu">Mt. Abu</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="text" id="citydescription" style="visibility: hidden" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Organisation Name</td>
+                    <td>
+                        <input type="text" name="userorg" id="userorg"  onkeypress="return isCharacterKey(event)" onkeyup="return validateOrganisation()" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Contact Number <sup style="color:red">*</sup></td>
+                    <td>
+                        <input type="tel" name="usercontact" id="usercontact" 
+                        onkeypress="return isNumberKey(event)" onkeyup="return validateContact()"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">Message</td>
+                    <td>
+                        <textarea name="usermessage" id="usermessage"  onkeyup="return validateMessage()"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="buttonToSubmit" value="Submit" onclick="validateForm(); saveToStore();" /></td>
+                    <td><p id="formValidationMessage"></p></td>
+                    
+                </tr>
+                <tr>
+                    <td><input type="button" name="buttonToSubmit" value="ClearLocalStorage"
+                         onclick="localStorageContactReset(); reset();"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+        <!-- Contact Form End -->
+        <hr/>
+        <!-- Footer Table Start -->
+        <table width="75%" id="footer" align="center">
+            <tr align="center">
+                <td>
+                    &copy Copyright 2016-2017 | All Right Reserved | Metacube Training
+                </td>
+            </tr>
+        </table>    
+        <!-- Footer Table End -->
+        
+    </body>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</html>
