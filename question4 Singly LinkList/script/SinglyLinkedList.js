@@ -43,7 +43,7 @@ SinglyLinkedList.prototype.display=function(){
 }
 
 
-SinglyLinkedList.prototype.removeByIndex=function(indexLocation){
+SinglyLinkedList.prototype.remove=function(indexLocation){
     if(this.isEmpty()){
         return;
     }

@@ -4,7 +4,7 @@ var organisationValidityFlag=true;
 var contactValidityFlag=false;
 var messageValidityFlag=true;
 function changePage(page){
-            window.location.href=page;
+    window.location.href=page;
 }
 
 function validateForm() {
@@ -26,6 +26,7 @@ function isNumberKey(evt){
     return true;
 }
 
+//accept only character values
 function isCharacterKey(evt){
     var charCode = (evt.which) ? evt.which : evt.keyCode;
     if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode < 32)
@@ -35,12 +36,12 @@ function isCharacterKey(evt){
 }
 
 function validateAlphabeticText(alphatext){
-   var letters = /^[A-Za-z ]*$/;  
-   if(alphatext.match(letters)) {  
-      return true;  
-     } else {    
-     return false;  
-     } 
+    var letters = /^[A-Za-z ]*$/;  
+    if(alphatext.match(letters)) {  
+    return true;  
+    } else {
+    return false;  
+    } 
 }
 
 function validateName(){
@@ -50,6 +51,7 @@ function validateName(){
         name.style.border="2px solid green";
         return true; 
     } else {
+        nameValidityFlag=false;
         name.style.border="2px solid red";
         return false;
     }
@@ -63,6 +65,7 @@ function validateOrganisation(){
         return true;
     } else {
         organisationValidityFlag=false;
+        organisationValidityFlag=false;
         organisation.style.border="2px solid red";
         return false;
     }
@@ -74,7 +77,8 @@ function validateEmail() {
         emailValidityFlag=true;  
         emailid.style.border="2px solid green";
         return (true) ; 
-    } else {  
+    } else {
+        emailValidityFlag=false; 
         emailid.style.border="2px solid red";
         return (false);
     }
@@ -88,6 +92,7 @@ function validateMessage() {
         return true;
     } else {
         messageValidityFlag=false;
+        messageValidityFlag=false;
         message.style.border="2px solid red";
         return false;
     }
@@ -99,29 +104,42 @@ function validateContact(){
         contactValidityFlag=true;
         contact.style.border="2px solid green"; 
         return (true) ; 
-    } else { 
+    } else {
+        contactValidityFlag=false;
         contact.style.border="2px solid red";
         return (false);
     }
 }
 function viewCityDescription(){
-	var element = document.getElementById("usercity");
-	if(document.getElementById("usercity").value !== "default" && document.getElementById("usercity").value !== "" ) {
+    var element = document.getElementById("usercity");
+    if(document.getElementById("usercity").value !== "default" && document.getElementById("usercity").value !== "" ) {
         document.getElementById("citydescription").style.visibility="visible";
-	    document.getElementById("citydescription").value="You have selected :"+usercity.value;
-	}
+        document.getElementById("citydescription").value="You have selected :"+usercity.value;
+    }
 }
 
+//save only valid fields to localStorage
 function saveToStore(){
+    if(nameValidityFlag){
         localStorage.setItem("contactform-username",document.getElementById("username").value);
-        localStorage.setItem("contactform-useremail",document.getElementById("useremail").value);
+    }
+    if(emailValidityFlag){
+       localStorage.setItem("contactform-useremail",document.getElementById("useremail").value);
+    }
+    if(organisationValidityFlag) {
         localStorage.setItem("contactform-userorg",document.getElementById("userorg").value);
-        localStorage.setItem("contactform-usercity",document.getElementById("usercity").value);
-        localStorage.setItem("contactform-citydescription",document.getElementById("citydescription").value);
+    }
+    localStorage.setItem("contactform-usercity",document.getElementById("usercity").value);
+    localStorage.setItem("contactform-citydescription",document.getElementById("citydescription").value);
+    if(messageValidityFlag){
         localStorage.setItem("contactform-usermessage",document.getElementById("usermessage").value);
+    }
+    if(contactValidityFlag){
         localStorage.setItem("contactform-usercontact",document.getElementById("usercontact").value);
     }
+}
 
+//get form field values from local storage
 function getFromStorage(){
     document.getElementById("username").value=localStorage.getItem("contactform-username");
     document.getElementById("useremail").value=localStorage.getItem("contactform-useremail");
@@ -132,6 +150,8 @@ function getFromStorage(){
     document.getElementById("usermessage").value=localStorage.getItem("contactform-usermessage");
     document.getElementById("usercontact").value=localStorage.getItem("contactform-usercontact");
 }
+
+//to clear local storage data corresponding to our form
 function localStorageContactReset(){
     localStorage.removeItem("contactform-username");
     localStorage.removeItem("contactform-useremail");
