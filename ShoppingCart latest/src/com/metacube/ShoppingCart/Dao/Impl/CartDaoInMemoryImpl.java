@@ -5,20 +5,29 @@ import java.util.HashMap;
 import com.metacube.ShoppingCart.Dao.CartDao;
 import com.metacube.ShoppingCart.TO.CartEntry;
 
+/**
+ * The Class CartDaoInMemoryImpl for a cart implementation that  is in memory
+ */
 public class CartDaoInMemoryImpl implements CartDao {
     
+    /** The map that hold cart items. */
     private HashMap<String,CartEntry> itemsInCart;
     
+    /**
+     * Instantiates a new cart dao in memory impl.
+     */
     public CartDaoInMemoryImpl() {
         super();
         this.itemsInCart=new HashMap<String, CartEntry>();
     }
 
+    
     @Override
     public  void addItemToCart(CartEntry cartEntry) {
          itemsInCart.put(cartEntry.getProductId(),cartEntry);
     }
 
+    
     @Override
     public boolean removeFromCart(String productId) {
         if(itemsInCart.containsKey(productId)){
@@ -29,18 +38,25 @@ public class CartDaoInMemoryImpl implements CartDao {
         return true;
     }
 
+    
     @Override
     public String generateBill() {
-        String billString="#################Your Order#################\n Entry No.  Product     Quantity    Subtotal \n";
-        billString+=displayCart();
+        String billString="";
+        if(!this.isEmpty()){
+	        billString+="#################Your Order#################\n Entry No.  Product     Quantity    Subtotal \n";
+	        billString+=displayCart();
+        }
         return billString;
     }
+    
+    
     @Override
     public String checkout(){
         String bill=generateBill();
         itemsInCart.clear();
         return bill; 
     }
+    
     @Override
     public String displayCart(){
         String cartString="Cart items: -\n";
@@ -55,10 +71,12 @@ public class CartDaoInMemoryImpl implements CartDao {
         cartString+="\t\t\t\tTotal = "+totalBill;
         return cartString;
     }
+      
     @Override
     public boolean isEmpty(){
         return itemsInCart.isEmpty();
     }
+    
     @Override
     public CartEntry getItemFromCart(String productId){
         return itemsInCart.get(productId);

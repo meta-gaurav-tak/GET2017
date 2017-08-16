@@ -29,6 +29,7 @@ public class CartFacade {
         }
     }
     
+    //calls dao implementations method to remove from cart 
     public Status removeFromCart(CartEntry cartEntry){
         if(cartDaoInstance.removeFromCart(cartEntry.getProductId())) {//check if product exists in cart or not
             return Status.SUCCESS_REMOVECART;
@@ -37,6 +38,7 @@ public class CartFacade {
         }
     }
     
+    //to display contents of shopping cart
     public String displayCart() {
         if(cartDaoInstance.isEmpty()){
             return Status.CART_EMPTY+"";
@@ -44,6 +46,8 @@ public class CartFacade {
             return cartDaoInstance.displayCart();
         }
     }
+    
+    //to checkout cart items and clear cart
     public String checkoutCart(){
         if(cartDaoInstance.isEmpty()){
             return Status.CART_EMPTY+"";

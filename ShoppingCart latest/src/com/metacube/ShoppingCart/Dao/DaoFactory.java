@@ -3,7 +3,7 @@ package com.metacube.ShoppingCart.Dao;
 import com.metacube.ShoppingCart.Dao.Impl.ProductFileDao;
 import com.metacube.ShoppingCart.Dao.Impl.ProductInMemoryDao;
 
-/*class to return singleton object of dao*/ 
+/*class to return singleton object of product dao*/ 
 public class DaoFactory {
     private static ProductDao productDao;       //singleton Object
     private DaoFactory(){
