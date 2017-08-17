@@ -1,0 +1,29 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from FahranheitToCelsiusService WSDL service -->
+
+  <service name="FahranheitToCelsius" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservice.metacube.com"/>
+      <parameter name="wsdlServiceElement" value="FahranheitToCelsiusService"/>
+      <parameter name="schemaQualified" value="http://webservice.metacube.com"/>
+      <parameter name="wsdlServicePort" value="FahranheitToCelsius"/>
+      <parameter name="className" value="com.metacube.webservice.FahranheitToCelsiusSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="FahranheitToCelsius"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="convertFahranheitToCelsius" qname="operNS:convertFahranheitToCelsius" xmlns:operNS="http://webservice.metacube.com" returnQName="retNS:convertFahranheitToCelsiusReturn" xmlns:retNS="http://webservice.metacube.com" returnType="rtns:double" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:temperature" xmlns:pns="http://webservice.metacube.com" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="convertFahranheitToCelsius"/>
+
+  </service>
+</deployment>
