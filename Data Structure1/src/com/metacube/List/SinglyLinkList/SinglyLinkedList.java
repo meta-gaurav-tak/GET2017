@@ -23,12 +23,14 @@ public class SinglyLinkedList<T extends Comparable<T>> {
             return false;
         }
     }
+    //adds to the end of list
     public boolean add(T data){
         return addAtPosition(data,listSize+1);
     }
+    //adds at a position if it exists and is valid
     public boolean addAtPosition(T data,int position){
         if(position<1 || position>listSize+1){
-            throw new IndexOutOfBoundsException();
+            throw new IllegalArgumentException();
         } else {
             SinglyLinkListNode<T> newNode=new SinglyLinkListNode<T>();
             newNode.setData(data);
@@ -50,7 +52,8 @@ public class SinglyLinkedList<T extends Comparable<T>> {
             return true;
         }
    }
-    
+   
+   //remove the first occurrence of a element by its value
    public SinglyLinkListNode<T> removeByValue(T data){
        SinglyLinkListNode<T> ptr=head;
        SinglyLinkListNode<T> removedNode;
@@ -58,8 +61,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
        {
            removedNode=head;
            this.head = ptr.getNext(); // Changed head
-           
-           System.out.println("at start index");
+           this.listSize--;
            return removedNode;
        }
        while(ptr.getNext()!=null && !(ptr.getNext().getData().compareTo(data)==0 )){
@@ -68,9 +70,11 @@ public class SinglyLinkedList<T extends Comparable<T>> {
        if(ptr.getNext()!=null && ptr.getNext().getData().compareTo(data)==0){
            removedNode=ptr.getNext();
            ptr.setNext((ptr.getNext()).getNext());
+           this.listSize--;
            return removedNode;
        } else if(ptr.getNext()==null && ptr.getData().compareTo(data)==0) {
            removedNode=ptr;
+           this.listSize--;
            ptr=null;
        } else {
           removedNode=null;
@@ -78,28 +82,36 @@ public class SinglyLinkedList<T extends Comparable<T>> {
        return removedNode;
    }
    
-   public SinglyLinkListNode<T> removeByPosition(int index) {
+   //remove a node by its position
+   public SinglyLinkListNode<T> removeByPosition(int position) {
+       if(position<1 || position>this.listSize) {
+           throw new IllegalArgumentException();
+       }
        SinglyLinkListNode<T> removedNode = null;
        SinglyLinkListNode<T> ptr=head;
        int counter=1;
-       if(index==1){
+       if(position==1){
            head=ptr.getNext();
+           this.listSize--;
            return ptr;
        }
-       while(ptr.getNext()!=null && counter<index-1){
+       while(ptr.getNext()!=null && counter<position-1){
            ptr=ptr.getNext();
            counter++;
        }
-       if(ptr.getNext()==null && counter==index) {
+       if(ptr.getNext()==null && counter==position) {
            removedNode=ptr;
+           this.listSize--;
            ptr=null;
-       } else if(counter==index-1){
+       } else if(counter==position-1){
            removedNode=ptr.getNext();
            ptr.setNext(ptr.getNext().getNext());
+           this.listSize--;
        }
        return removedNode;
    }
    
+   //reverses the list and stores it in original list
    void reverse(SinglyLinkListNode<T> node) {
        SinglyLinkListNode<T> prev = null;
        SinglyLinkListNode<T> current = node;
@@ -114,31 +126,36 @@ public class SinglyLinkedList<T extends Comparable<T>> {
        this.head=node;
    
    }
-   private SinglyLinkListNode<T> sortedMerge(SinglyLinkListNode<T> a, SinglyLinkListNode<T> b) {
+   
+   /*
+    * Sorting methods
+    */
+   //method to merge sorted sublist
+   private SinglyLinkListNode<T> sortedMerge(SinglyLinkListNode<T> leftSublist, SinglyLinkListNode<T> rightSublist) {
        SinglyLinkListNode<T> result = null;
-       if (a == null)
-           return b;
-       if (b == null)
-           return a;
-       if( a.getData().compareTo(b.getData())<0) {
-           result = a;
-           result.setNext (sortedMerge(a.getNext(), b));
+       if (leftSublist == null)
+           return rightSublist;
+       if (rightSublist == null)
+           return leftSublist;
+       if( leftSublist.getData().compareTo(rightSublist.getData())<0) {
+           result = leftSublist;
+           result.setNext (sortedMerge(leftSublist.getNext(), rightSublist));
        } else {
-           result = b;
-           result.setNext(sortedMerge(a, b.getNext()));
+           result = rightSublist;
+           result.setNext(sortedMerge(leftSublist, rightSublist.getNext()));
        }
        return result;
    }
-
-   public SinglyLinkListNode<T> mergeSort(SinglyLinkListNode<T> h) {
-       if (h == null || h.getNext() == null) {
-           return h;
+   // splits the lsit and calls sorted merge
+   public SinglyLinkListNode<T> mergeSort(SinglyLinkListNode<T> headptr) {
+       if (headptr == null || headptr.getNext() == null) {
+           return headptr;
        }
-       SinglyLinkListNode<T> middle = getMiddle(h);
+       SinglyLinkListNode<T> middle = getMiddle(headptr);
        SinglyLinkListNode<T> nextofmiddle = middle.getNext();
        middle.setNext(null);
        // Apply mergeSort on left list
-       SinglyLinkListNode<T> left = mergeSort(h);
+       SinglyLinkListNode<T> left = mergeSort(headptr);
        // Apply mergeSort on right list
        SinglyLinkListNode<T> right = mergeSort(nextofmiddle);
        // Merge the left and right lists
@@ -147,11 +164,11 @@ public class SinglyLinkedList<T extends Comparable<T>> {
    }
 
    // Utility function to get the middle of the linked list
-   private SinglyLinkListNode<T> getMiddle(SinglyLinkListNode<T> h) {
-       if (h == null)
-           return h;
-       SinglyLinkListNode<T> fastptr = h.getNext();
-       SinglyLinkListNode<T> slowptr = h;  
+   private SinglyLinkListNode<T> getMiddle(SinglyLinkListNode<T> headPtr) {
+       if (headPtr == null)
+           return headPtr;
+       SinglyLinkListNode<T> fastptr = headPtr.getNext();
+       SinglyLinkListNode<T> slowptr = headPtr;  
        // Move fastptr by two and slow ptr by one
        // Finally slowptr will point to middle node
        while (fastptr != null) {
@@ -164,6 +181,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
        return slowptr;
    }
    
+   //displays the list to console
    public void displayList() {
        SinglyLinkListNode<T> ptr=this.head;
        while(ptr!=null) {
@@ -171,6 +189,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
            ptr=ptr.getNext();
        }
    }
+   
   /* public static void main(String args[]){
        SinglyLinkedList<Integer> sll=new SinglyLinkedList<Integer>();
        for(int i=0;i<10;i++){

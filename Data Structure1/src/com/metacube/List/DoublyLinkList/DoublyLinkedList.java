@@ -2,7 +2,7 @@ package com.metacube.List.DoublyLinkList;
 
 public class DoublyLinkedList<T extends Comparable<T>> {
     private DoublyLinkListNode<T> head=null;
-    public int listSize;
+    public int listSize;        // consists no. of elements in list
     public boolean isEmpty(){
         if(head!=null){
             return true;
@@ -10,9 +10,11 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             return false;
         }
     }
+    //adds to end of list
     public boolean add(T data){
         return addAtPosition(data,this.listSize+1);
     }
+    //getters setters
     public DoublyLinkListNode<T> getHead() {
         return head;
     }
@@ -25,9 +27,10 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     public void setListSize(int listSize) {
         this.listSize = listSize;
     }
+    //adds to a position if it exists and is valid
     public boolean addAtPosition(T data,int position){
         if(position<1 || position>listSize+1){
-            throw new IndexOutOfBoundsException();
+            throw new IllegalArgumentException();
         } else {
             DoublyLinkListNode<T> newNode=new DoublyLinkListNode<T>();
             newNode.setData(data);
@@ -64,13 +67,18 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         }
     }
     
+    // remove an element by its position
     public DoublyLinkListNode<T> removeByPosition(int index){
+        if(index<1 || index>this.listSize) {
+            throw new IllegalArgumentException();
+        }
         DoublyLinkListNode<T> removedNode = null;
         DoublyLinkListNode<T> ptr=head;
         int counter=1;
         if(index==1){
             ptr.getNext().setPrevious(null);
             head=ptr.getNext();
+            listSize--;
             return ptr;
         }
         while(ptr.getNext()!=null && counter<index){
@@ -80,16 +88,19 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         if(ptr.getNext()==null && counter==index) {
             removedNode=ptr;
             ptr.getPrevious().setNext(null);
+            listSize--;
             ptr=null;
         } else if(counter==index){
             removedNode=ptr;
             ptr.getPrevious().setNext(ptr.getNext());
             ptr.getNext().setPrevious(ptr.getPrevious());
+            listSize--;
             ptr=null;
         }
         return removedNode;
     }
     
+    //remove first occurrence of an element by its value
     public DoublyLinkListNode<T> removeByValue(T data) {
         DoublyLinkListNode<T> ptr=head;
         DoublyLinkListNode<T> removedNode;
@@ -99,6 +110,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
                 ptr.getNext().setPrevious(null);
             }
             this.head = ptr.getNext(); // Changed head
+            listSize--;
             //System.out.println("at start index");
             return removedNode;
         }
@@ -120,6 +132,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         return removedNode;
     }
     
+    // reverses the doubly link list
     public void reverseList(){              
         DoublyLinkListNode<T> ptr=this.head;
         DoublyLinkListNode<T> temp=null;
@@ -146,6 +159,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         }
     }
     
+    //sorts the link list by bubble sort
     public void sort() {
         if (this.head == null) {
             throw new NullPointerException();
@@ -163,7 +177,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             firstLoop = firstLoop.getNext();
         }
     }
-    
+    //utility method to swap two nodes
     private void swap(DoublyLinkListNode<T> firstNode, DoublyLinkListNode<T> secondNode) {
         T temp = (T) firstNode.getData();
         firstNode.setData(secondNode.getData());

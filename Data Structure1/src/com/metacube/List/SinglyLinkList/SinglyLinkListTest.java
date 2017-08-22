@@ -5,7 +5,7 @@ import org.junit.Test;
 public class SinglyLinkListTest {
     SinglyLinkedList<Integer> singlyLinkListObject;
     
-    @Test(expected=IndexOutOfBoundsException.class)
+    @Test(expected=IllegalArgumentException.class)
     public void addElementToListByPositionExceptionTest(){
         singlyLinkListObject=new SinglyLinkedList<Integer>();
         singlyLinkListObject.addAtPosition(5, 9);

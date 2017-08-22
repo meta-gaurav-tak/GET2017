@@ -10,7 +10,7 @@ import com.metacube.List.DoublyLinkList.DoublyLinkedList;
 public class DoublyLinkListTest {
 DoublyLinkedList<Integer> doublyLinkListObject;
     
-    @Test(expected=IndexOutOfBoundsException.class)
+    @Test(expected=IllegalArgumentException.class)
     public void addElementToListByPositionExceptionTest(){
         doublyLinkListObject=new DoublyLinkedList<Integer>();
         doublyLinkListObject.addAtPosition(5, 9);

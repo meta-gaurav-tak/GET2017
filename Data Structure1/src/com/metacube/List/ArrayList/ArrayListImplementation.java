@@ -6,20 +6,19 @@ public class ArrayListImplementation<T> {
  
     private T[] arrayObject;
     private int actualSize = 0;
+    private static final int DEFAULT_CAPACITY = 10;
     public int getActualSize() {
         return actualSize;
     }
     public void setActualSize(int actualSize) {
         this.actualSize = actualSize;
     }
-
-
-    private static final int DEFAULT_CAPACITY = 10;
-     
     @SuppressWarnings("unchecked")
 	public ArrayListImplementation(){
         arrayObject = (T[]) new Object[DEFAULT_CAPACITY];
     }
+    
+    //get the object at an index
     public T get(int index){
         if(index < actualSize){
             return arrayObject[index];
@@ -27,6 +26,7 @@ public class ArrayListImplementation<T> {
             throw new ArrayIndexOutOfBoundsException();
         }
     }
+    // to retrieve first occurrence of an object by its value
     public int retrieve(T obj){
         int indexer=0;
         while(indexer<actualSize){
@@ -39,6 +39,7 @@ public class ArrayListImplementation<T> {
         return -1;          // if obj is not found
     }
     
+    //to retrieve first occurence of an object after a location
     public int retrieve(T obj,int location){
         int indexer=location;
         while(indexer<actualSize){
@@ -51,6 +52,7 @@ public class ArrayListImplementation<T> {
         return -1;          // if obj is not found
     }
     
+    //add object to an arraylist making sure its capacity
     public void add(T obj){
         if(arrayObject.length-actualSize <= 2){
             ensureCapacity();
@@ -74,6 +76,7 @@ public class ArrayListImplementation<T> {
         }
     }
     
+    // to remove an array list object
     public T remove(int index){
         if(index < actualSize && index>=0){
             T obj = arrayObject[index];
@@ -103,6 +106,7 @@ public class ArrayListImplementation<T> {
         arrayObject = Arrays.copyOf(arrayObject, arrayObject.length*2);
     }
     
+    //to sort the list
     @SuppressWarnings("unchecked")
 	public void sort(){
         T[] sortedSubarray=(T[])Arrays.copyOfRange(arrayObject, 0, actualSize);
@@ -113,6 +117,7 @@ public class ArrayListImplementation<T> {
         }
     }
     
+    // to reverse the elements in list
     @SuppressWarnings("unchecked")
 	public void reverse() {
         T[] reverse = (T[]) new Object[arrayObject.length];
@@ -122,7 +127,11 @@ public class ArrayListImplementation<T> {
         this.arrayObject=reverse;
      }
 
-	
+	/**
+	 * Question no.2
+	 * To add another arraylist to a pre-existing list
+	 * @param list
+	 */
 	public void addList(ArrayListImplementation<T> list) {
 		while(actualSize == arrayObject.length || (arrayObject.length - actualSize) < list.actualSize ) {
 			ensureCapacity();
