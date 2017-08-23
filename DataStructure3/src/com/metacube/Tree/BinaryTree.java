@@ -75,14 +75,28 @@ class BinaryTree {
                 && areMirror(first.left, second.right) && areMirror(first.right, second.left) );
     }
     
+    //this method adds nodes to tree as in a binary search tree
+    public TreeNode addToTree(TreeNode rootOfSubtree,Object data) {
+        TreeNode newNode = new TreeNode(data);
+        if(rootOfSubtree==null) {
+            rootOfSubtree=newNode;
+        } else {
+            if(data.toString().compareTo(rootOfSubtree.getData().toString()) < 0 ) {
+                rootOfSubtree.setLeft(addToTree(rootOfSubtree.getLeft(),data));
+            } else {
+                rootOfSubtree.setRight(addToTree(rootOfSubtree.getRight(), data));
+            }
+        }
+        return rootOfSubtree;
+    }
+    
     /*public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
-        tree.root = new TreeNode(1);
-        tree.getRoot().setLeft(new TreeNode(2));
-        tree.getRoot().setRight(new TreeNode(3));
-        tree.getRoot().getLeft().setLeft(new TreeNode(4));
-        tree.getRoot().getRight().setLeft(new TreeNode(5));
- 
+        tree.root=tree.addToTree(tree.root, 1);
+        tree.root=tree.addToTree(tree.root, 4);
+        tree.root=tree.addToTree(tree.root, 2);
+        tree.root=tree.addToTree(tree.root, 0);
+        tree.root=tree.addToTree(tree.root, 19);
         System.out.println("Preorder traversal of binary tree is ");
         try {
             System.out.println(tree.traversePreOrder());
