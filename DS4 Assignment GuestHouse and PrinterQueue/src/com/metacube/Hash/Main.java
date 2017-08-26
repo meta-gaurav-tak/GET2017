@@ -21,14 +21,14 @@ public class Main {
         System.out.println("Enter no. of guests : ");
         noOfGuests = getIntegerInput(scan);
         // Checks if the number of guests is greater than the number of rooms available.
-        if (noOfGuests > metaGuestHouse.getTotalRoomsInGuestHouse()) {
-            System.out.println("Room are available for only " + metaGuestHouse.getTotalRoomsInGuestHouse()
+        if (noOfGuests > metaGuestHouse.getCurrentlyAvailableNumberOfRooms()) {
+            System.out.println("Room are available for only " + metaGuestHouse.getCurrentlyAvailableNumberOfRooms()
                     + " people !\n Want to continue with lesser guests ");
             if (!(scan.next().charAt(0)=='y') ) {
-                System.out.println("Thank You.");
+                System.out.println("Thank You for visiting us");
                 System.exit(0);
             } else {
-                noOfGuests = metaGuestHouse.getTotalRoomsInGuestHouse();
+                noOfGuests = metaGuestHouse.getCurrentlyAvailableNumberOfRooms();
             }
         }
         // Gets the name and age of each guest.

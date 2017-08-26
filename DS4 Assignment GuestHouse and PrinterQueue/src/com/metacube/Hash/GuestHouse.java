@@ -22,6 +22,15 @@ public class GuestHouse {
         this.totalRoomsInGuestHouse = totalRoomsInGuestHouse;
         this.currentlyAvailableNumberOfRooms = totalRoomsInGuestHouse;
     }
+    
+    public int getCurrentlyAvailableNumberOfRooms() {
+        return currentlyAvailableNumberOfRooms;
+    }
+
+    public void setCurrentlyAvailableNumberOfRooms(
+            int currentlyAvailableNumberOfRooms) {
+        this.currentlyAvailableNumberOfRooms = currentlyAvailableNumberOfRooms;
+    }
 
     public Hashtable<Integer, Guest> getHashtable() {
         return hashtable;
