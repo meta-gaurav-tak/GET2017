@@ -31,12 +31,12 @@ public class Utility {
         do {
             try {
                 value = Integer.parseInt(scan.nextLine());
-                if(String.class.isInstance(value) && value <= 0) {
+                if(String.class.isInstance(value) || value <= 0) {
                     throw new NumberFormatException();
                 }
                 flag = false;
             } catch(NumberFormatException e) {
-                System.out.println(" Enter an integer value ");
+                System.out.println(" Enter a Positive integer value ");
             }
         } while(flag);
         
@@ -62,19 +62,13 @@ public class Utility {
 
         return min;
     }
-    public static void printMenu(){
-        System.out.println("1. Update the array");
-        System.out.println("2. Comparison Sorting");
-        System.out.println("3. Linear Sorting");
-        System.out.println("4. Exit");
-    }
     
     public static int getChoiceInput() {
         boolean flag = true;
         int value = 0;
         do {
             try {
-                value = Integer.parseInt(scan.next());
+                value = Integer.parseInt(scan.nextLine());
                 if(String.class.isInstance(value) || value < 1 || value > 4) {
                     throw new NumberFormatException();
                 }

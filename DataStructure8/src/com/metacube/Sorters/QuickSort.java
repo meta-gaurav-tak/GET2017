@@ -1,6 +1,18 @@
 package com.metacube.Sorters;
 
-public class QuickSort {    
+import com.metacube.Exceptions.ArrayUndefinedException;
+
+public class QuickSort implements ArraySorter {
+    /**
+     * This is an overridden sort method that sorts using Quick sort
+     */
+    @Override
+    public int[] sort(int[] arrayToSort) throws ArrayUndefinedException {
+        if(arrayToSort == null || arrayToSort.length == 0) {
+            throw new ArrayUndefinedException("The array to sort is either empty or null");
+        }
+        return quickSort(arrayToSort,0,arrayToSort.length - 1);
+    }
     /**
      * This method performs re-arrangemnt of pivot element to its actual location in the sorted order 
      * @param startIndex
@@ -52,4 +64,5 @@ public class QuickSort {
             return arrayToSort;
         }
 }
+    
 }

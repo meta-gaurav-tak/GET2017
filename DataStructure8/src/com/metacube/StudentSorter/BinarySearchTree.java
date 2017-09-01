@@ -6,6 +6,7 @@ import java.util.List;
 public class BinarySearchTree {
     // Root of Binary Tree
     private TreeNode root;
+    // stores the traversal list for node
     private List<Integer> traverseList;
     
     public List<Integer> getTraverseList() {
@@ -48,6 +49,7 @@ public class BinarySearchTree {
         return rootOfSubtree;
     }
     
+    //traverse a tree in-order and store traversal to list
     public void traverseInorder(TreeNode rootOfSubtree) {
         if(rootOfSubtree == null) {
             return;

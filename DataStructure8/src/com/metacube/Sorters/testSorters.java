@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class testSorters {
+import com.metacube.Exceptions.ArrayUndefinedException;
+
+public class TestSorters {
     int arrayToSort[];
     @Before 
     public void initializeArray() {
@@ -13,28 +15,58 @@ public class testSorters {
     }
     @Test
     public void testQuickSort() {
-        int sorted[] = new QuickSort().quickSort(arrayToSort,0,arrayToSort.length-1);
-        int expected[] = {-907,-1,0,1,1,5,5,5,23,78,88,90,105,1007,1007};
-        assertArrayEquals(expected, sorted);
+        int sorted[];
+        try {
+            sorted = new QuickSort().sort(arrayToSort);
+            int expected[] = {-907,-1,0,1,1,5,5,5,23,78,88,90,105,1007,1007};
+            assertArrayEquals(expected, sorted);
+        } catch (ArrayUndefinedException e) {
+            e.getMessage();
+        }
+        
     }
     @Test
     public void testBubbleSort() {
-        BubbleSort bubbleSort = new BubbleSort();
-        int sorted[] = bubbleSort.bubbleSort(arrayToSort);
-        int expected[] = {-907,-1,0,1,1,5,5,5,23,78,88,90,105,1007,1007};
-        assertArrayEquals(expected, sorted);
+        int sorted[];
+        try {
+            sorted = new BubbleSort().sort(arrayToSort);
+            int expected[] = {-907,-1,0,1,1,5,5,5,23,78,88,90,105,1007,1007};
+            assertArrayEquals(expected, sorted);
+        } catch (ArrayUndefinedException e) {
+            e.getMessage();
+        }
+        
     }
     @Test
     public void testCountingSort() {
-        int sorted[] = new CountingSort().sort(arrayToSort);
-        int expected[] = {-907,-1,0,1,1,5,5,5,23,78,88,90,105,1007,1007};
-        assertArrayEquals(expected, sorted);
+        int sorted[];
+        try {
+            sorted = new CountingSort().sort(arrayToSort);
+            int expected[] = {-907,-1,0,1,1,5,5,5,23,78,88,90,105,1007,1007};
+            assertArrayEquals(expected, sorted);
+        } catch (ArrayUndefinedException e) {
+           e.getMessage();
+        }
     }
     @Test
     public void testRadixSort() {
-        int sorted[] = new RadixSort().radixSort(arrayToSort);
-        int expected[] = {-907,-1,0,1,1,5,5,5,23,78,88,90,105,1007,1007};
-        assertArrayEquals(expected, sorted);
+        int sorted[];
+        try {
+            sorted = new RadixSort().sort(arrayToSort);
+            int expected[] = {-907,-1,0,1,1,5,5,5,23,78,88,90,105,1007,1007};
+            assertArrayEquals(expected, sorted);
+        } catch (ArrayUndefinedException e) {
+            e.getMessage();
+        }  
     }
-
+    
+    @Test(expected = ArrayUndefinedException.class)
+    public void testNullException() throws ArrayUndefinedException {
+        new RadixSort().sort(null);
+    }
+    
+    @Test(expected = ArrayUndefinedException.class)
+    public void testEmptyException() throws ArrayUndefinedException {
+        new QuickSort().sort(new int[] {});
+    }
 }
