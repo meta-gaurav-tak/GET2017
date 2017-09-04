@@ -1,17 +1,17 @@
 INSERT INTO Members (member_name, address_line1, address_line2, category)
-VALUES ("Gaurav Tak", "Nehru Nagar", "Sirohi", "Subscribed");
+VALUES ("Gaurav Tak", "Nehru Nagar", "Sirohi", "F");
 INSERT INTO Members (member_name, address_line1, address_line2, category)
-VALUES ("Shivam Lalwani", "Sindhi Colony", "Gwalior", "Subscribed");
+VALUES ("Shivam Lalwani", "Sindhi Colony", "Gwalior", "F");
 INSERT INTO Members (member_name, address_line1, address_line2, category)
-VALUES ("Neel Singhal", "Brahmpuri", "Jaipur", "Trial");
+VALUES ("Neel Singhal", "Brahmpuri", "Jaipur", "S");
 INSERT INTO Members (member_name, address_line1, address_line2, category)
-VALUES ("Udit Saxena", "Railway Colony", "Jabalpur", "Trial");
+VALUES ("Udit Saxena", "Railway Colony", "Jabalpur", "S");
 INSERT INTO Members (member_name, address_line1, address_line2, category)
-VALUES ("Rajat Jain", "Johri Bazar", "Jaipur", "Subscribed");
+VALUES ("Rajat Jain", "Johri Bazar", "Jaipur", "F");
 INSERT INTO Members (member_name, address_line1, address_line2, category)
-VALUES ("Chetan Sharma", "Tonk Fatak", "Jaipur", "Trial");
+VALUES ("Chetan Sharma", "Tonk Fatak", "Jaipur", "S");
 INSERT INTO Members (member_name, address_line1, address_line2, category)
-VALUES ("Pawan Manglani", "Tonk Fatak", "Jaipur", "Subscribed");
+VALUES ("Pawan Manglani", "Tonk Fatak", "Jaipur", "F");
 
 
 
