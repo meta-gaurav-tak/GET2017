@@ -86,7 +86,7 @@ all issue details of the member using a simple SELECT command.
 
 CREATE VIEW  Member_Issue_Detail AS
 SELECT member_name, accession_no, issue_date, due_date 
-FROM Book_issue JOIN Members
+FROM Members LEFT JOIN Book_issue
 ON Members.member_id = book_issue.member_id; 
 
 SELECT * FROM Member_Issue_Detail;
@@ -102,8 +102,7 @@ and Others instead of F,S and O
 */
 
 CREATE VIEW Category_WISE_MEMBER AS
-SELECT 
-    member_name,member_id, CASE category WHEN "F" THEN "Faculty" WHEN "S" THEN "Students" ELSE "Others" END
+SELECT member_name,member_id, CASE category WHEN "F" THEN "Faculty" WHEN "S" THEN "Students" ELSE "Others" END
 FROM Members;
 
 SELECT * FROM Category_WISE_MEMBER;
