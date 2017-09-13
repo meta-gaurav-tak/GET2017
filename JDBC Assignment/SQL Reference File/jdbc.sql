@@ -30,6 +30,21 @@ values(8010,'U','2009-01-12',800,505);
 INSERT into  books(accession_no,status,price,title_id)
 values(8021,'A',1000,502);
 
+DROP Trigger Due_Date_Trigger;
+
+DELIMITER $$
+CREATE TRIGGER Due_Date_Trigger 
+BEFORE INSERT ON Book_issue  
+FOR EACH ROW 
+BEGIN   
+        IF((select books.status from books where books.accession_no = New.accession_no) <> 'A' ) THEN 
+        SET New.accession_no = null;
+        ELSE
+        SET New.due_date = DATE_ADD(NEW.issue_date , INTERVAl 15 DAY);
+        END IF;
+END;
+$$
+DELIMITER ;
 
 
 DELIMITER $$
@@ -53,4 +68,4 @@ $$
 DELIMITER ;
 
 
-INSERT INTO book_issue(accession_no,member_id) values (8009,103);
+INSERT INTO book_issue(accession_no,member_id) values (8002,108);
