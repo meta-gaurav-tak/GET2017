@@ -11,8 +11,8 @@
     width:100%;
 }
 @media (max-width: 767px) {
-   .navbar {
-       min-height: auto;
+    .navbar {
+        min-height: auto;
    }
 }
 .navbar {
@@ -29,13 +29,13 @@ li:active {
     padding-right:0px;
 }
 .success-bg {
-     background-color:rgb(193,226,179);
+    background-color:rgb(193,226,179);
 }
 .orange-bg {
-     background-color:#ffebee;
+    background-color:#ffebee;
 }
 .danger-bg {
-     background-color:#ffcdd2;
+    background-color:#ffcdd2;
 }
 .fill-red {
     background-color:  #b3b300;
@@ -103,6 +103,12 @@ small-text {
     font-size:12px;
 }
 
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media(min-width:992px){
 .col-eq {
     position:relative;
@@ -115,9 +121,9 @@ small-text {
 }
 
 .equal {
-  display: flex;
-  display: -webkit-flex;
-  flex-wrap: wrap;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
 }
 }
 
