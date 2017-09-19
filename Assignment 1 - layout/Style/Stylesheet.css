@@ -1,0 +1,129 @@
+.header-box {
+    background-color: #ba5e5e;
+    padding-top:1%;
+}
+.footer-box {
+    background-color: #ba5e5e;
+    padding:1%;
+    color:white;
+    position:fixed;
+    bottom:0px;
+    width:100%;
+}
+@media (max-width: 767px) {
+    .navbar {
+        min-height: auto;
+   }
+}
+.navbar {
+    border:0px;
+}
+.active-tab {
+    background-color: #ba5e5e;
+}
+li:active {
+    background-color: #ba5e5e;
+}
+.navbar-collapse {
+    padding-left: 0px;
+    padding-right:0px;
+}
+.success-bg {
+    background-color:rgb(193,226,179);
+}
+.orange-bg {
+    background-color:#ffebee;
+}
+.danger-bg {
+    background-color:#ffcdd2;
+}
+.fill-red {
+    background-color:  #b3b300;
+    padding:10%;
+    color: white;
+    text-align: center;
+    margin: 2%;
+    border-radius: 3%;
+}
+.navbar-toggle .icon-bar {
+    background-color:#662d2d;
+}
+.navbar-toggle {
+    border:solid #662d2d; 
+}
+.fill-green {
+    background-color:  #ff5233;
+    padding:10%;
+    color: white;
+    text-align: center;
+    margin: 2%;
+    border-radius: 3%;
+}
+.fill-yellow {
+    background-color:  #339961;
+    padding:10%;
+    color: white;
+    text-align: center;
+    margin: 2%;
+    border-radius: 3%;
+}
+.fill-blue {
+    background-color: #990099;
+    padding:10%;
+    color: white;
+    text-align: center;
+    margin: 2%;
+    border-radius: 3%;
+}
+.margined {
+    margin-top:50px;
+    margin-bottom: 50px;
+}
+.toward-right {
+    float : right;
+    border-radius: 0%;
+}
+.unround-button {
+    border-radius: 0%;
+}
+#link-buttons {
+    text-align: center;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color:white;
+}
+
+.break-word {
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+small-text {
+    font-size:12px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media(min-width:992px){
+.col-eq {
+    position:relative;
+     min-height:700px;
+}
+.at-bottom {
+    position:absolute;
+    bottom:0px;
+    width:95%;
+}
+
+.equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+}
+}
+
