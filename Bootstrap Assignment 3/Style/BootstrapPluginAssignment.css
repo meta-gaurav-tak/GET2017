@@ -1,0 +1,183 @@
+.header-box {
+    padding-top:1%;
+}
+.footer-box {
+    padding:1%;
+    position:fixed;
+    bottom:0px;
+    width:100%;
+}
+.background-theme {
+    background-color: #ba5e5e;
+}
+@media (max-width: 767px) {
+    .navbar {
+        min-height: auto;
+   }
+}
+.navbar {
+    border:0px;
+}
+li:active {
+    background-color: #ba5e5e;
+}
+.navbar-collapse {
+    padding-left: 0px;
+    padding-right:0px;
+}
+.success-bg {
+    background-color:rgb(193,226,179);
+}
+.orange-bg {
+    background-color:#ffebee;
+}
+.danger-bg {
+    background-color:#ffcdd2;
+}
+.centered-text{
+    text-align: center;
+}
+.fill-tile1,.fill-tile2,.fill-tile3,.fill-tile4 {
+    border-radius: 3%;
+}
+.fill-tile1 {
+    background-color:  #b3b300;
+    padding:10%;
+    margin: 2%;
+}
+.navbar-toggle .icon-bar {
+    background-color:#662d2d;
+}
+.navbar-toggle {
+    border:solid #662d2d; 
+}
+.fill-tile2 {
+    background-color:  #ff5233;
+    padding:10%;
+    margin: 2%;
+}
+.fill-tile3 {
+    background-color:  #339961;
+    padding:10%;
+    margin: 2%;
+}
+.fill-tile4 {
+    background-color: #990099;
+    padding:10%;
+    margin: 2%;
+}
+.margined {
+    margin-top:50px;
+    margin-bottom: 50px;
+}
+.unround-button {
+    border-radius: 0%;
+}
+#link-buttons {
+    text-align: center;
+}
+.break-word {
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+small-text {
+    font-size:12px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media(min-width:992px){
+    .col-eq {
+        position:relative;
+        min-height:700px;
+    }
+    .at-bottom {
+        position:absolute;
+        bottom:0px;
+        width:95%;
+    }
+    .equal {
+        display: flex;
+        display: -webkit-flex;
+        flex-wrap: wrap;
+    }
+}
+
+.close-button {
+    margin:-15px !important;
+    background-color:  white;
+    border-radius: 50%;
+    height:25px;
+    width:25px;
+    font-weight: bolder;
+    opacity:1;
+}
+.white-text, .navbar-inverse .navbar-nav>li>a {
+    color:white;
+}
+.parrot-color {
+    background-color:  #b3b300;
+    position:relative;
+}
+.carousel-control.left {
+    background-image: none;
+}
+.carousel-control.right {
+    background-image: none;
+}
+.carousel-control .glyphicon-chevron-right, .carousel-control  .glyphicon-chevron-left {
+    font-size: 20px;
+    opacity:0.3;
+    color:black;
+}
+.padded {
+    padding:0px 25px;
+    padding-top: 30px;
+}
+.carousel-inner {
+    margin-bottom:50px;
+}
+.carousel-indicators li {
+    background-color: grey;
+}
+.carousel-indicators .active {
+    background-color:black;
+}
+.carousel-indicators {
+    margin-bottom:-50px;
+}
+.carousel-control {
+    width:4%
+}
+.modal-body{
+    border-radius: 0px !important;
+    padding: 0px;
+}
+.accordion-color {
+    background-color: #009788 !important;
+    height: 40px;
+}
+.accordion-toggle {
+    color:  #009788;  
+}
+.modal {
+    top:20%;
+}
+.modal-header{
+    padding:5px;
+    padding-left:15px;
+}
+.modal-content {
+    height:auto;
+}
+.carousel-inner {
+    min-height:290px;
+}
+.tooltip{
+    position:fixed;
+}
