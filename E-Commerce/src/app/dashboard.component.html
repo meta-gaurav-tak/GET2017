@@ -1,0 +1,21 @@
+<H3>Best Sellers</H3>
+<product-search></product-search>
+<div class="container">
+    <div *ngFor="let product of products" 
+        [routerLink]="['/detail', product.id]">
+        <div class="col-md-4">
+            <div class="product-item">
+              <div class="pi-img-wrapper">
+                <img src={{product.imageUrl}} class="img-responsive" alt="Berry Lace Dress">
+                <div>
+                  <a  class="btn">Zoom</a>
+                  <a  class="btn">View</a>
+                </div>
+              </div>
+              <h3><a href="shop-item.html">{{product.name}}</a></h3>
+              <div class="pi-price">{{product.price}}</div>
+              <div class="sticker sticker-new"></div>
+            </div>
+        </div>
+    </div>
+</div>>

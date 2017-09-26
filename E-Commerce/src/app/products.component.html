@@ -1,0 +1,68 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<h2>Your Marketplace!</h2>
+<!-- filter component-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <add-product></add-product>
+        </div>
+        <div class="pull-right">
+            <Label class="label-warning">Filter By:</Label>
+            <select class="selectpicker">
+                <option class=" label label-info" selected>Name</option>
+            </select>   
+            <input type="text" name="term" [(ngModel)]="term" />
+        </div>
+    </div>
+</div>
+
+<div class="container padded">
+    <div id="products" class="row list-group" >
+        <div class="item  col-xs-12 col-sm-6 col-md-3 col-lg-3"
+            *ngFor="let product of products | filterByName: term" 
+            [class.selected]="product === selectedProduct"
+            (click)="onSelect(product)">
+            <div class="thumbnail">
+                <img class="group grid-group-image" src={{product.imageUrl}} alt=""/>
+                <hr/>
+                <div class="caption">
+                    <h4 class="group inner grid-group-item-heading break-word">
+                        {{product.name}}</h4>
+                        <hr/>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-5">
+                            <p>
+                                Rs. {{product.price}}</p>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button class="btn-sm btn-danger"
+                                (click)="delete(product); $event.stopPropagation()">Delete</button>
+                        </div>
+                        <div class="col-xs-6"> 
+                            <button  class= "btn-sm btn-info" (click)="gotoDetail()">View Details</button> 
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-6">                                                       
+                            <button class="btn-sm btn-success" routeLink="cart.html">Add to cart</button>
+                        </div>
+                        <div class="col-xs-6">                                                       
+                            <button class="btn-sm btn-primary" (click)='editProduct()'>Edit Product</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>

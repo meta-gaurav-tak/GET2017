@@ -1,0 +1,36 @@
+<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Add New Product</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add New Product</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Product name:</label> <input #productName required/>
+                    </div>
+                    <div class="colmd-6">
+                        <label>Product price:</label> <input #productPrice required/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Product image Url:</label> <input #productImage/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-sm btn-success" (click)="add(productName.value,productPrice.value,productImage.value);
+                    productName.value='';productPrice.value='';productImage.value=''" data-dismiss="modal">
+                    Add
+                </button>
+                <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
