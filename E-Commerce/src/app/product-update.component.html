@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-md-6">
                     <label class="label label-warning">Name: </label>
-                    <input [(ngModel)]="product.name" placeholder="name" />
+                    <input [(ngModel)]="product.name" placeholder="name" maxlength="100"/>
                 </div>
                 <div class="col-md-6">
                     <label class="label label-warning">Image Url: </label>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-md-6">
                     <label class="label label-warning">Price: </label>
-                    <input type="textarea" [(ngModel)]="product.price" placeholder="price" />
+                    <input type="number" [(ngModel)]="product.price" placeholder="price" />
                 </div>
             </div>
             <div class="row">
