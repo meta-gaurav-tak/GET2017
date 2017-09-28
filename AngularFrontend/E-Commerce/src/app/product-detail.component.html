@@ -1,0 +1,21 @@
+<div *ngIf="product">
+  <div class="container details-dialog">
+    <h2>{{product.name}} details!</h2>
+    <div class="row">
+      <div class="col-md-4"><label class="label label-warning">id: </label><span class="badge">{{product.id}}</span></div>
+      <div class="col-md-4">
+        <label label class="label label-warning">Name: </label>
+        <label><span class="badge">{{product.name}}</span></label>
+      </div>
+      <div class="col-md-4">
+        <label class="label label-warning">Price: </label>
+        <label><span class="badge">{{product.price}}</span></label>
+      </div>
+    </div>
+    <div>
+      <label>image:</label>
+      <img src={{product.imageUrl}} style="max-height:300px" />
+    </div>
+    <button class="btn btn-primary pull-right" (click)="goBack()">Back</button>
+  <div>
+</div>
