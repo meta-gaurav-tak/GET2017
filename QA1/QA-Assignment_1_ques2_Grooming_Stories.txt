@@ -1,0 +1,27 @@
+As a railway user, I should get an option to cancel the  tickets, so that user can cancel the ticket and get refund.
+Acceptance Criteria: 
+A new button with Label “Cancel Ticket” should be displayed for canceling the ticket.
+Button should not be displayed for those tickets for which journey date is previous than current date.
+Refund amount should be calculated as follows:
+If user cancel the ticket 60 days prior to journey date.
+            Refund 70% of amount
+If user cancel the ticket b/n 60-30 days prior to journey date
+Refund 50% of amount.
+
+If user cancel the ticket between 30-10 days 
+            Refund 35% of amount.
+If user cancel the ticket between 10-1 days 
+            Refund 20% of amount.
+
+User should get an email for successful cancellation.
+
+Grooming User Story:
+Case 1:When the train is cancelled
+Case 2:Refund on the basis of Status of the ticket of the passenger(Confirmed/RAC/WaitingList)
+Case 3:Should also send an mandatory confirmation message on mobile?
+Case 4:Authentication code(OTP) should be sent on cancellation of ticket to authenticate the user
+Case 5:The page should display list of all the booked tickets and a search option to search for the desired ticket
+Case 6:Refund is not credited
+Case 7:How amount should be credited back
+Case 8:In case of multiple seats are booked via one PNR number and user wants to cancel only few of them but not the whole ticket
+Case 9: In case of login is done through username, email not provided, where to fetch email from.
