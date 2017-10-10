@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="37" started-at="2017-10-10T10:05:39Z" finished-at="2017-10-10T10:05:39Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="37" started-at="2017-10-10T10:05:39Z" finished-at="2017-10-10T10:05:39Z">
+      <class name="Gaurav_Package.TestAutomation1">
+        <test-method status="PASS" signature="f3()[pri:0, instance:Gaurav_Package.TestAutomation1@48aaecc3]" name="f3" is-config="true" duration-ms="11" started-at="2017-10-10T15:35:39Z" finished-at="2017-10-10T15:35:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- f3 -->
+        <test-method status="PASS" signature="f()[pri:0, instance:Gaurav_Package.TestAutomation1@48aaecc3]" name="f" duration-ms="6" started-at="2017-10-10T15:35:39Z" finished-at="2017-10-10T15:35:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- f -->
+        <test-method status="PASS" signature="f2()[pri:0, instance:Gaurav_Package.TestAutomation1@48aaecc3]" name="f2" is-config="true" duration-ms="0" started-at="2017-10-10T15:35:39Z" finished-at="2017-10-10T15:35:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- f2 -->
+      </class> <!-- Gaurav_Package.TestAutomation1 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
