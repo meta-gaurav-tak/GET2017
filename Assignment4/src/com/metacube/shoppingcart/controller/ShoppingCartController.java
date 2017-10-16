@@ -1,7 +1,6 @@
 
 package com.metacube.shoppingcart.controller;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.metacube.shoppingcart.dto.ProductDto;
-import com.metacube.shoppingcart.dto.UserDto;
 import com.metacube.shoppingcart.facade.CartFacade;
 import com.metacube.shoppingcart.facade.OrderFacade;
 import com.metacube.shoppingcart.facade.ProductFacade;
 import com.metacube.shoppingcart.facade.UserFacade;
-import com.metacube.shoppingcart.model.Cart;
+import com.metacube.shoppingcart.model.CartItem;
 import com.metacube.shoppingcart.model.Order;
 import com.metacube.shoppingcart.model.OrderDetail;
 
@@ -26,8 +24,8 @@ import com.metacube.shoppingcart.model.OrderDetail;
  */
 @CrossOrigin
 @Controller
-@RequestMapping("/product")
-public class ProductController {
+@RequestMapping("/ShoppingApplication")
+public class ShoppingCartController {
 
 	/** The product facade. */
 	@Autowired
@@ -46,7 +44,7 @@ public class ProductController {
 	 *
 	 * @return the products
 	 */
-	@RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/product/getAll", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody Iterable<ProductDto> getProducts() {
 		return productFacade.getAllProducts();
 	}
@@ -58,7 +56,7 @@ public class ProductController {
 	 *            the id
 	 * @return the by id
 	 */
-	@RequestMapping(value = "/getOne/{id}")
+	@RequestMapping(value = "/product/getOne/{id}")
 	public @ResponseBody ProductDto getById(@PathVariable("id") int id) {
 		return productFacade.getProductById(id);
 	}
@@ -70,7 +68,7 @@ public class ProductController {
 	 *            the id
 	 * @return the boolean
 	 */
-	@RequestMapping(value = "/delete/{id}")
+	@RequestMapping(value = "/product/delete/{id}")
 	public @ResponseBody Boolean deleteById(@PathVariable("id") int id) {
 		return productFacade.deleteById(id);
 	}
@@ -82,7 +80,7 @@ public class ProductController {
 	 *            the product
 	 * @return the product dto
 	 */
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/product/save", method = RequestMethod.POST)
 	public @ResponseBody ProductDto save(@RequestBody ProductDto product) {
 		return productFacade.save(product.getId(), product.getName(),
 				product.getPrice());
@@ -95,7 +93,7 @@ public class ProductController {
 	 *            the product
 	 * @return the product dto
 	 */
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/product/update", method = RequestMethod.POST)
 	public @ResponseBody ProductDto updateById(@RequestBody ProductDto product) {
 		return productFacade.update(product.getId(), product.getName(),
 				product.getPrice());
@@ -104,57 +102,42 @@ public class ProductController {
 	public @ResponseBody Object getById(
 			@PathVariable("username") String username,
 			@PathVariable("password") String password) {
-		UserDto user = userFacade.getUserById(username);
-		System.out.println("i m called");
-		System.out.println((user.getName()) + user.getPassword());
-		if ((username.equals(user.getName()))
-				&& (password.equals(user.getPassword()))) {
-			JSONObject obj = new JSONObject();
-			obj.put("authenticationFlag", true);
-			obj.put("userId", user.getId());
-			System.out.print(obj);
-			return obj;
-		} else {
-			JSONObject obj = new JSONObject();
-			obj.put("authenticationFlag", false);
-			obj.put("userId", -1);
-			System.out.print(obj);
-			return obj;
-		}
+		return userFacade.authenticate(username,password);
+		
 	}
-	@RequestMapping(value = "/getAllCart/{id}", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody Iterable<Cart> getAllCartItems(
-			@PathVariable("id") String id) {
-		return cartFacade.getAll(id);
+	@RequestMapping(value = "/getCart/{userName}", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody Iterable<CartItem> getAllCartItems(
+			@PathVariable("userName") String userName) {
+		return cartFacade.getAll(userName);
 	}
 
 	@RequestMapping(value = "/saveToCart", method = RequestMethod.POST, produces = "application/json")
-	public @ResponseBody Cart addtoCart(@RequestBody Cart cart) {
-		return cartFacade.addToCart(cart.getPname(), cart.getPrice(),
-				cart.getProductId(), cart.getUserId());
+	public @ResponseBody CartItem addtoCart(@RequestBody CartItem cart) {
+		return cartFacade.addToCart(cart.getProduct().getName(), cart.getProduct().getPrice(),
+				cart.getProduct().getId(), cart.getUser().getUsername());
 	}
 
 	@RequestMapping(value = "/checkout/{id}")
-	public @ResponseBody Boolean deleteById(@PathVariable("id") String id) {
-		return cartFacade.checkout(id);
+	public @ResponseBody Boolean checkout(@PathVariable("id") String userName) {
+		return cartFacade.checkout(userName);
 	}
 
 	@RequestMapping(value = "/order/{id}", method = RequestMethod.POST)
-	public @ResponseBody boolean deleteById(@PathVariable("id") String id,
+	public @ResponseBody boolean saveOrder(@PathVariable("id") String userName,
 			@RequestBody Order order) {
-		return orderFacade.saveOrder(id, order);
+		return orderFacade.saveOrder(userName, order);
 	}
 
-	@RequestMapping(value = "/getAllOrder/{id}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/getAllOrder/{userName}", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody Iterable<Order> getAllOrder(
-			@PathVariable("id") String id) {
-		return orderFacade.getAllOrder(id);
+			@PathVariable("userName") String userName) {
+		return orderFacade.getAllOrder(userName);
 	}
 
-	@RequestMapping(value = "/getOrderDetail/{id}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/getOrderDetail/{orderId}", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody Iterable<OrderDetail> getOrderDetail(
-			@PathVariable("id") int id) {
-		return orderFacade.getOrderDetail(id);
+			@PathVariable("orderId") int orderId) {
+		return orderFacade.getOrderDetail(orderId);
 	}
 
 }

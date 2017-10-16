@@ -1,12 +1,12 @@
 package com.metacube.shoppingcart.facade;
 
-import com.metacube.shoppingcart.model.Cart;
+import com.metacube.shoppingcart.model.CartItem;
 
 public interface CartFacade {
 
-	Iterable<Cart> getAll(final String id);
+	Iterable<CartItem> getAll(final String id);
 
-	Cart addToCart(String pname, double price, int productId, String userId);
+	CartItem addToCart(String pname, double price, int productId, String userId);
 
 	Boolean checkout(String id);
 

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,14 +18,13 @@ public class OrderDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderDetailId;
 
-	@Column(name = "pname")
-	private String pname;
-
-	@Column(name = "price")
-	private double price;
-
-	@Column(name = "orderId")
-	private int orderId;
+	@ManyToOne
+	@JoinColumn(name = "productId")
+	private Product product;
+	
+	@ManyToOne
+	@JoinColumn(name = "orderId")
+	private Order order;
 
 	@Column(name = "quantity")
 	private int quantity;
@@ -36,31 +37,23 @@ public class OrderDetail {
 		this.orderDetailId = orderDetailId;
 	}
 
-	public String getPname() {
-		return pname;
-	}
+	public Product getProduct() {
+        return product;
+    }
 
-	public void setPname(String pname) {
-		this.pname = pname;
-	}
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
-	public double getPrice() {
-		return price;
-	}
+    public Order getOrder() {
+        return order;
+    }
 
-	public void setPrice(double d) {
-		this.price = d;
-	}
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
-	public int getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
-	}
-
-	public int getQuantity() {
+    public int getQuantity() {
 		return quantity;
 	}
 

@@ -24,18 +24,17 @@ public class DefaultOrderFacade implements OrderFacade {
 	}
 
 	@Override
-	public boolean saveOrder(String id, Order order) {
-		System.out.println("order service is" + orderService);
-		return orderService.saveCart(id, order);
+	public boolean saveOrder(String userName, Order order) {
+		return orderService.saveCart(userName, order);
 	}
 
 	@Override
-	public Iterable<Order> getAllOrder(String id) {
-		return orderService.getAllOrder(id);
+	public Iterable<Order> getAllOrder(String userName) {
+		return orderService.getAllOrder(userName);
 	}
 
 	@Override
-	public Iterable<OrderDetail> getOrderDetail(int id) {
-		return orderService.getOrderDetail(id);
+	public Iterable<OrderDetail> getOrderDetail(int orderId) {
+		return orderService.getOrderDetail(orderId);
 	}
 }

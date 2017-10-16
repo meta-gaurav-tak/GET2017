@@ -81,7 +81,7 @@ public class DefaultProductService implements ProductService {
 	 * @see com.metacube.shoppingcart.service.ProductService#deletetById(int)
 	 */
 	@Override
-	public Boolean deletetById(int id) {
+	public Boolean deleteById(Integer id) {
 		return productDao.delete(id);
 
 	}

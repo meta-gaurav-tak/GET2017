@@ -3,7 +3,7 @@ package com.metacube.shoppingcart.dto;
 public class UserDto {
 	private int id;
 
-	private String Name;
+	private String userName;
 
 	private String password;
 
@@ -15,12 +15,12 @@ public class UserDto {
 		this.id = id;
 	}
 
-	public String getName() {
-		return Name;
+	public String getUserName() {
+		return userName;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		userName = name;
 	}
 
 	public String getPassword() {

@@ -11,7 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.metacube.shoppingcart.model.Cart;
+import com.metacube.shoppingcart.model.CartItem;
 import com.metacube.shoppingcart.model.Order;
 import com.metacube.shoppingcart.model.OrderDetail;
 import com.metacube.shoppingcart.model.Product;
@@ -170,28 +170,28 @@ BaseDao<T, ID> {
 	public T getOne(final String id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		Criteria cr = session.createCriteria(getModelClass());
-		cr = cr.add(Restrictions.eq("cname", id));
+		cr = cr.add(Restrictions.eq("userName", id));
 		return (T) cr.uniqueResult();
 	}
 
 	@Override
-	public Iterable<Cart> getAll(final String id) {
+	public Iterable<CartItem> getAll(final String id) {
 		Session session = this.sessionFactory.getCurrentSession();
 		Criteria cr = session.createCriteria(getModelClass());
-		cr = cr.add(Restrictions.eq("userId", id));
-		List<Cart> productList = cr.list();
+		cr = cr.add(Restrictions.eq("user", id));
+		List<CartItem> productList = cr.list();
 		return productList;
 	}
 	@Override
-	public Cart addToCart(String pname, double price, int productId,
+	public CartItem addToCart(String pname, double price, int productId,
 			String userId) {
 
 		Session session = this.sessionFactory.getCurrentSession();
-		Cart cart = new Cart();
-		cart.setPname(pname);
+		CartItem cart = new CartItem();
+		/*cart.setPname(pname);
 		cart.setPrice(price);
 		cart.setProductId(productId);
-		cart.setUserId(userId);
+		cart.setUserId(userId);*/
 		cart.setQuantity(1);
 
 		session.save(cart);
@@ -204,8 +204,8 @@ BaseDao<T, ID> {
 		Criteria cr = session.createCriteria(getModelClass());
 		boolean result = true;
 		cr = cr.add(Restrictions.eq("userId", username));
-		List<Cart> productList = cr.list();
-		for (Cart product : productList) {
+		List<CartItem> productList = cr.list();
+		for (CartItem product : productList) {
 			session.delete(product);
 		}
 		return result;
@@ -216,11 +216,11 @@ BaseDao<T, ID> {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.createCriteria(getModelClass());
 		Order ord = new Order();
-		ord.setUserId(id);
+		/*ord.setUserId(id);
 		ord.setDop(new Date());
 		ord.setCardNumber(order.getCardNumber());
 		ord.setCvv(order.getCvv());
-		ord.setAmount(order.getAmount());
+		ord.setAmount(order.getAmount());*/
 		session.save(ord);
 
 		return ord.getOrderId();
@@ -228,17 +228,17 @@ BaseDao<T, ID> {
 	}
 
 	@Override
-	public void saveCart(List<Cart> cart, int orderId) {
+	public void saveCart(List<CartItem> cart, int orderId) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.createCriteria(getModelClass());
 		OrderDetail ordet = null;
-		for (Cart cartObj : cart) {
+		for (CartItem cartObj : cart) {
 
 			ordet = new OrderDetail();
 
-			ordet.setOrderId(orderId);
+			/*ordet.setOrderId(orderId);
 			ordet.setPname(cartObj.getPname());
-			ordet.setPrice(cartObj.getPrice());
+			ordet.setPrice(cartObj.getPrice());*/
 			ordet.setQuantity(1);
 
 			session.save(ordet);

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.metacube.shoppingcart.dao.order.OrderDao;
-import com.metacube.shoppingcart.model.Cart;
+import com.metacube.shoppingcart.model.CartItem;
 import com.metacube.shoppingcart.model.Order;
 import com.metacube.shoppingcart.model.OrderDetail;
 
@@ -32,19 +32,14 @@ public class DefaultOrderService implements OrderService {
 	public boolean saveCart(String id, Order order) {
 
 		int orderId = orderDao.saveOrder(id, order);
-		Iterable<Cart> cart = cartService.getAll(id);
-		System.out.println(cart.getClass());
-		System.out.println(cart.toString());
-		Cart carts;
-		List<Cart> cartModel = new ArrayList<Cart>();
-		for (Cart cartObj : cart) {
-			carts = new Cart();
-			carts.setPname(cartObj.getPname());
-			carts.setPrice(cartObj.getPrice());
-			carts.setQuantity(1);
-			cartModel.add(carts);
+		Iterable<CartItem> cart = cartService.getAll(id);
+		System.out.println("in cart" + cart.toString());
+		List<CartItem> cartModel = new ArrayList<CartItem>();
+		for (CartItem cartObj : cart) {
+			cartModel.add(cartObj);
 		}
 		orderDao.saveCart(cartModel, orderId);
+		cartService.checkout(id);
 		return true;
 	}
 

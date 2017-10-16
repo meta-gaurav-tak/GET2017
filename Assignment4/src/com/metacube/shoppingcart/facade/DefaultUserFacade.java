@@ -3,6 +3,7 @@ package com.metacube.shoppingcart.facade;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -34,7 +35,6 @@ public class DefaultUserFacade implements UserFacade {
 	@Override
 	public Iterable<UserDto> getAllUsers() {
 		List<UserDto> userDtoList = new ArrayList<>();
-
 		for (User user : userService.getAllUsers()) {
 			userDtoList.add(modelToDto(user));
 		}
@@ -43,8 +43,8 @@ public class DefaultUserFacade implements UserFacade {
 	}
 
 	@Override
-	public UserDto getUserById(final String id) {
-		return modelToDto(userService.getUserById(id));
+	public UserDto getUserByUserName(final String userName) {
+		return modelToDto(userService.getUserById(userName));
 	}
 
 	protected User dtoToModel(UserDto userDto) {
@@ -53,9 +53,8 @@ public class DefaultUserFacade implements UserFacade {
 		}
 		User user = new User();
 		user.setId(userDto.getId());
-		user.setName(userDto.getName());
+		user.setUsername(userDto.getUserName());
 		user.setPassword(userDto.getPassword());
-
 		return user;
 	}
 
@@ -65,14 +64,26 @@ public class DefaultUserFacade implements UserFacade {
 		}
 		UserDto userDto = new UserDto();
 		userDto.setId(user.getId());
-		userDto.setName(user.getName());
+		userDto.setName(user.getUsername());
 		userDto.setPassword(user.getPassword());
-
 		return userDto;
 	}
 
 	@Override
-	public boolean authenticate(String username, String password) {
-		return false;
+	public JSONObject authenticate(String username, String password) {
+	    UserDto user = getUserByUserName(username);
+	    if ((username.equals(user.getUserName()))
+                && (password.equals(user.getPassword()))) {
+            JSONObject obj = new JSONObject();
+            obj.put("authenticationFlag", true);
+            obj.put("userId", user.getId());
+            return obj;
+        } else {
+            JSONObject obj = new JSONObject();
+            obj.put("authenticationFlag", false);
+            obj.put("userId", -1);
+            System.out.print(obj);
+            return obj;
+        }
 	}
 }

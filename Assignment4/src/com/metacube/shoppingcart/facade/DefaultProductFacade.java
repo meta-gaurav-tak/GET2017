@@ -127,7 +127,7 @@ public class DefaultProductFacade implements ProductFacade {
 	 */
 	@Override
 	public Boolean deleteById(int id) {
-		return (productService.deletetById(id));
+		return (productService.deleteById(id));
 
 	}
 

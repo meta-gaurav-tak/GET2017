@@ -23,34 +23,22 @@ public class Order {
 
 	@Column(name = "cvv")
 	private int cvv;
+	
+	
+	@Column(name = "orderAmount")
+	private double orderAmount;
 
-	@Column(name = "amount")
-	private double amount;
+	@Column(name = "userName")
+	private String userName;
 
-	@Column(name = "userId")
-	private String userId;
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 
 	/**
 	 *
 	 */
-	@Column(name = "dop")
-	private Date dop;
+	@Column(name = "dateOfOrder")
+	private Date dateOfOrder;
 
-	public Date getDop() {
-		return dop;
-	}
-
-	public void setDop(Date dop) {
-		this.dop = dop;
-	}
+	
 
 	public int getOrderId() {
 		return orderId;
@@ -76,12 +64,30 @@ public class Order {
 		this.cvv = cvv;
 	}
 
-	public double getAmount() {
-		return amount;
-	}
+    public double getOrderAmount() {
+        return orderAmount;
+    }
 
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
+    public void setOrderAmount(double orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Date getDateOfOrder() {
+        return dateOfOrder;
+    }
+
+    public void setDateOfOrder(Date dateOfOrder) {
+        this.dateOfOrder = dateOfOrder;
+    }
+
+	
 
 }

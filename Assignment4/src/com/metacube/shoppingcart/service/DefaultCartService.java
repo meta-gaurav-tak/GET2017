@@ -7,7 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.metacube.shoppingcart.dao.cart.CartDao;
 import com.metacube.shoppingcart.dao.order.OrderDao;
-import com.metacube.shoppingcart.model.Cart;
+
+import com.metacube.shoppingcart.model.CartItem;
 @Service("cartService")
 @Transactional
 public class DefaultCartService implements CartService {
@@ -19,7 +20,7 @@ public class DefaultCartService implements CartService {
 	OrderDao orderDao;
 
 	@Override
-	public Iterable<Cart> getAll(final String id) {
+	public Iterable<CartItem> getAll(final String id) {
 		return cartDao.getAll(id);
 	}
 
@@ -32,7 +33,7 @@ public class DefaultCartService implements CartService {
 	}
 
 	@Override
-	public Cart addToCart(String pname, double price, int productId,
+	public CartItem addToCart(String pname, double price, int productId,
 			String userId) {
 		return cartDao.addToCart(pname, price, productId, userId);
 	}

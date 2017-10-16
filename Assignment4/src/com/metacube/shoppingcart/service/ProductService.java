@@ -25,13 +25,13 @@ public interface ProductService {
 	Product getProductById(int id);
 
 	/**
-	 * Deletet by id.
+	 * Delete by id.
 	 *
 	 * @param id
 	 *            the id
 	 * @return the boolean
 	 */
-	Boolean deletetById(int id);
+	Boolean deleteById(Integer id);
 
 	/**
 	 * Save.
